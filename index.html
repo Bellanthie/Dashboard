@@ -1,1 +1,28 @@
- 
+<!--tolka filen som mordern HTML.-->
+<!doctype html>
+<!--html = lådan som håller hela sidan| lang = svenska-->
+<html lang="sv">
+  <!--inställningarna bakom kulisserna-->
+  <head>
+    <!--visar ÅÄÖ visas rätt.-->
+    <meta charset="UTF-8" />
+    <!--texten som syns uppe i webbläsarfliken -inte på själva sidan-->
+    <title>Min Dashboard</title>
+    <!--kopplar ihop din HTML med min style.css --href addressen till filen-->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <!--allt användaren ser på sidan: klocka, länkar, vädret-->
+  <body>
+    <!-- osynlig låda som håller klockan & datum tillsammans -->
+    <div id="klocka">
+      <!--unikt namn - JavaScript anävnder för att hitta elementet.-->
+      <p id="tid">00:00:00</p>
+      <!--visar tiden m platshållare-->
+      <p id="datum">Laddar datum...</p>
+      <!--visar datum på samma sätt-->
+    </div>
+    <!-- // kopplar HTML med script.js -->
+    <script src="script.js"></script>
+  </body>
+</html>
