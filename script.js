@@ -175,3 +175,39 @@ if (navigator.geolocation) {
 } else {
   document.getElementById("vader-info").textContent = "Geolocation stöds inte";
 }
+
+// NYHETER
+function hamtaNyheter() {
+  fetch("https://hacker-news.firebaseio.com/v0/topstories.json")
+    .then(function (svar) {
+      return svar.json();
+    })
+    .then(function (nyhetsIds) {
+      var fem = nyhetsIds.slice(0, 5); // visa de 5 senaste nyheterna
+
+      // för varje nyhetsIds fetch:ar vi detaljerna om just DEN nyheten(rubrik, url osv)
+      fem.forEach(function (id) {
+        fetch("https://hacker-news.firebaseio.com/v0/item/" + id + ".json")
+          .then(function (svar) {
+            return svar.json();
+          })
+          .then(function (nyhet) {
+            var lista = document.getElementById("nyhets-lista"); // nytt objekt med all info
+            var li = document.createElement("li"); //nytt li element
+            li.innerHTML =
+              '<a href="' +
+              nyhet.url +
+              '" target="_blank">' +
+              nyhet.title +
+              "</a>";
+            lista.appendChild(li); // lägg till i listan
+          });
+      });
+    })
+    // om något går fel (ingen internet, APIfel) || om allt funkar--->kör .catch inte
+    .catch(function () {
+      document.getElementById("nyhets-lista").innerHTML =
+        "<li> Kunde inte hämta nyheter.</li>";
+    });
+}
+hamtaNyheter();

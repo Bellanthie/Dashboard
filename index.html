@@ -17,15 +17,19 @@
     <!-- KLOCKA | LÄNKAR + SPARADE LÄNKAR -->
     <!-- osynlig låda som håller klockan & datum tillsammans -->
     <div id="klocka">
+      <p id="tid">00:00:00</p>
+      <!--visar tiden m platshållare-->
+      <p id="datum">Laddar datum...</p>
+      <!--visar datum på samma sätt-->
       <!--unikt namn - JavaScript anävnder för att hitta elementet.-->
       <h1 id="rubrik">Min Dashboard</h1>
-      <div id="länkar">
+      <div id="lankar">
         <h2>Sparade länkar</h2>
         <ul id="lank-lista"></ul>
         <!-- tom lista=unorderedlist=punktlista -->
         <input id="lank-rubrik" type="text" placeholder="Google" />
         <!-- textfält->anv skriver länkens rubrik -->
-        <input id="lank-url" typ="url" placeholder="https://www.google.se" />
+        <input id="lank-url" type="url" placeholder="https://www.google.se" />
         <!-- textfält->spfk URL -->
         <button id="lagg-till-knapp">Lägg till länk</button>
         <!-- clickbar knapp -->
@@ -36,11 +40,11 @@
         <h2>Väder</h2>
         <p id="vader-info">Hämtar väder...</p>
       </div>
-      <p id="tid">00:00:00</p>
-      <!--visar tiden m platshållare-->
-      <p id="datum">Laddar datum...</p>
-      <!--visar datum på samma sätt-->
-    </div>
+      <div id="nyheter">
+        <h2>Senaste nytt</h2>
+        <ul id="nyhets-lista"></ul>
+      </div>
+
     <!-- // kopplar HTML med script.js -->
     <script src="script.js"></script>
   </body>
