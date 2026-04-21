@@ -14,6 +14,7 @@
 
   <!--allt användaren ser på sidan: klocka, länkar, vädret-->
   <body>
+    <!-- KLOCKA | LÄNKAR + SPARADE LÄNKAR -->
     <!-- osynlig låda som håller klockan & datum tillsammans -->
     <div id="klocka">
       <!--unikt namn - JavaScript anävnder för att hitta elementet.-->
@@ -28,6 +29,12 @@
         <!-- textfält->spfk URL -->
         <button id="lagg-till-knapp">Lägg till länk</button>
         <!-- clickbar knapp -->
+      </div>
+      <!-- VÄDER -->
+      <div id="vader">
+        <!--väder delen-->
+        <h2>Väder</h2>
+        <p id="vader-info">Hämtar väder...</p>
       </div>
       <p id="tid">00:00:00</p>
       <!--visar tiden m platshållare-->

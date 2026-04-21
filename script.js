@@ -120,3 +120,58 @@ document
     }
   });
 visaLankar(); // kör 1ggr-> sparade länkar visas direkt (annars står listan tom tills anv lägger till något)
+
+// VÄDER
+function hamtaVader(lat, lon) {
+  var url =
+    "https://api.open-meteo.com/v1/forecast" +
+    "?latitude=" +
+    lat +
+    "&longitude=" +
+    lon +
+    "&current=temperature_2m,weather_code";
+
+  fetch(url)
+    .then(function (svar) {
+      // översätt API svaret till ett JavaScript-objekt ->då kan vi plocka ur datan.
+      return svar.json();
+    })
+    .then(function (data) {
+      // data objekt vi kan jobba med
+      var temp = data.current.temperature_2m;
+      var nominatimUrl =
+        "https://nominatim.openstreetmap.org/reverse?lat=" +
+        lat +
+        "&lon=" +
+        lon +
+        "&format=json";
+      fetch(nominatimUrl)
+        .then(function (svar) {
+          return svar.json();
+        })
+        .then(function (plats) {
+          var stad =
+            plats.address.city ||
+            plats.address.town ||
+            plats.address.village ||
+            "Din plats";
+          document.getElementById("vader-info").textContent =
+            stad + ": " + temp + "°C";
+        });
+    })
+    .catch(function () {
+      // om något går fel (-internet,api nere) visa felmeddelande
+      document.getElementById("vader-info").textContent =
+        "kunde inte hämta väder";
+    });
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    hamtaVader(lat, lon);
+  });
+} else {
+  document.getElementById("vader-info").textContent = "Geolocation stöds inte";
+}
