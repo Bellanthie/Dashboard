@@ -117,6 +117,6 @@ document
       var index = event.target.getAttribute("data-index"); // ta bort datan/värdet från det indexet
       lankar.splice(index, 1); // ta bort 1 element i position=index ur arrayen
       sparaLankar(); //spara och visa den uppdaterade listan
-      visaLankar(); // kör 1ggr-> sparade länkar visas direkt (annars står listan tom tills anv lägger till något)
     }
   });
+visaLankar(); // kör 1ggr-> sparade länkar visas direkt (annars står listan tom tills anv lägger till något)
