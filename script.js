@@ -12,6 +12,7 @@ function uppdateraKlocka() {
     timmar + ":" + minuter + ":" + sekunder;
 
   var datumText = nu.toLocaleDateString("sv-SE", {
+    // nu.'toLocalDateString' = metod
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -21,5 +22,6 @@ function uppdateraKlocka() {
   document.getElementById("datum").textContent = datumText;
 }
 
-uppdateraKlocka();
-setInterval(uppdateraKlocka, 1000);
+uppdateraKlocka(); // funktion|kör en gång vid start
+// kör funktionen 'uppdateraKlocka var 1000:e millisekund, 4ever
+setInterval(uppdateraKlocka, 1000); // setInterval = metod, uppdateraKlocka = funktion, 1000 = hur ofta den ska köras (i milisekunder)--> 1000 = 1 sek
