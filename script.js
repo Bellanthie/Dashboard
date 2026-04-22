@@ -211,3 +211,15 @@ function hamtaNyheter() {
     });
 }
 hamtaNyheter();
+
+// ANTECKNINGAR
+// anteckningarna sparas när anv. klickar utanför lådan
+var anteckningsYta = document.getElementById("antecknings-yta");
+var sparadeAnteckningar = localStorage.getItem("anteckningar");
+if (sparadeAnteckningar) {
+  anteckningsYta.value = sparadeAnteckningar;
+}
+// input gör att anv.input sparas även om webbläsaren skulle krascha.
+anteckningsYta.addEventListener("input", function () {
+  localStorage.setItem("anteckningar", anteckningsYta.value);
+});
